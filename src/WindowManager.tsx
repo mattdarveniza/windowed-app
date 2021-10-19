@@ -22,6 +22,9 @@ export const WindowManager = () => {
 
   const addToList = () => setList((list) => [...list, textField]);
 
+  const removeFromList = (item: string) =>
+    setList(list.filter((i) => i !== item));
+
   const createWindow = () => {
     const newWindow = window.open(
       "",
@@ -44,7 +47,10 @@ export const WindowManager = () => {
         <Window w={w}>
           <ul>
             {list.map((item) => (
-              <li>{item}</li>
+              <li>
+                {item}
+                <button onClick={() => removeFromList(item)}>x</button>
+              </li>
             ))}
           </ul>
         </Window>
